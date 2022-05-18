@@ -59,7 +59,7 @@ def register(request):
             send_email = EmailMessage(mail_subject, message, to =[to_email])
             send_email.send()
             
-            #messages.success(request, 'Registration successful.')
+            messages.success(request, 'Registration successful.')
             return redirect('/accounts/login/?command-verification&email='+email)
     else:
         form = RegistrationForm
@@ -76,8 +76,9 @@ def login(request):
         email = request.POST['email']   
         password = request.POST['password']
         
-        user = auth.authenticate( email =email, password =password )
-        
+        user = auth.authenticate( email =email,password =password,  )
+        print(user)
+        print(user.username)
         if user is not None :
             auth.login(request, user)
             messages.success(request, 'You Are Now logged in. ')
