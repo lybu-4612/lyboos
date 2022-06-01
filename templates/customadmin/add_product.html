@@ -1,0 +1,57 @@
+
+{% load crispy_forms_filters %}
+
+{% load static %}
+
+<!-- pageHeader -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Tables - SB Admin</title>
+        <link href="{% static 'stat/https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' %}" rel="stylesheet" />
+        <link href="{% static 'stat/css/styles.css' %}" rel="stylesheet" />
+        <script src="{% static 'stat/https://use.fontawesome.com/releases/v6.1.0/js/all.js'%}" crossorigin="anonymous"></script>
+    </head>
+
+<div class="wrapper " style="margin: 10px auto">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <div>
+        <h1>Add Product</h1>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <form class="" action="{% url 'add_product' %}" method="POST"  enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="container">
+        <div class= "text-right">
+
+        </div>
+        {{ form|crispy }}
+        
+        {% include 'includes/alerts.html' %}
+
+        
+      <input type="submit" class=" btn btn-primary " value="submit" style="background:#5ba515;color:white">
+      </div>
+  </div>
+
+  </form>
+
+  <!-- Remind Passowrd -->
+
+
+</div>
+</div>

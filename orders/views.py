@@ -24,7 +24,7 @@ def payments(request):
     print('hai')
     
     print(body)
-    #show transaction details inside  payment model\
+    #show transaction details inside  payment model
     
     payment = Payment(
         
@@ -41,7 +41,7 @@ def payments(request):
     order.is_ordered = True
     order.save()
     
-    # Move cart itens to order_product table 
+    # Move cart items to order_product table 
     
     cart_items = CartItem.objects.filter(user = request.user)
     
