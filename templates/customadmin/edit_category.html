@@ -1,23 +1,23 @@
 
+
+{% extends 'customadmin/admin_nav.html' %}
+
 {% load crispy_forms_filters %}
+
 
 {% load static %}
 
+    
+    
+{% block content %}
+
+
+<!---end of navbar-->
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+
 <!-- pageHeader -->
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Tables - SB Admin</title>
-        <link href="{% static 'stat/https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' %}" rel="stylesheet" />
-        <link href="{% static 'stat/css/styles.css' %}" rel="stylesheet" />
-        <script src="{% static 'stat/https://use.fontawesome.com/releases/v6.1.0/js/all.js'%}" crossorigin="anonymous"></script>
-    </head>
+<div id="layoutSidenav_content">
     
     <body>
 
@@ -34,11 +34,11 @@
     </div>
 
     <!-- Login Form -->
-    <form class="" action="{% url 'edit_category' id  %}" method="POST" enctype="multipart/form-data" >
+    <form class="" action="{% url 'edit_category' id  %}" method="POST" id="register" enctype="multipart/form-data" >
       {% csrf_token %}
       <div class="container">
         <div class= "text-right">
-            <img src="{{ category.cat_image.url }}"alt="Category  Image" width="100" style = "border-radius:50px;">
+            <img src="{{ categorys.cat_image.url }}"alt="Category  Image" width="100" style = "border-radius:50px;">
 
         </div>
         {{ form|crispy }}
@@ -49,8 +49,9 @@
         
       <input type="submit" class="btn btn-primary" value="Edit" style="background:#5ba515;color:white">
     </div>
-
   </div>
+
+
 
   </form>
 
@@ -59,5 +60,9 @@
 
 </div>
 </div>
+</div>
 </body>
 </html>
+
+  
+  {% endblock %}

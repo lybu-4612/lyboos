@@ -150,33 +150,36 @@ def add_category(request):
         'form':form
     }
     if request.method == 'POST':
-        form=AddCategoryForm(request.POST)
-
+        form=AddCategoryForm(request.POST,request.FILES)
         if form.is_valid():
+            print('category added successfully')
             form.save()
             return redirect('admin_category')
         else:
-            messages.error(request, "product invalid")
+            messages.error(request, "category  invalid")
             return redirect('add_category')
     return render(request, 'customadmin/add_category.html',context)
 
 def edit_category(request,id):
+    
     form=EditCategoryForm(request.POST)
-    cate=category.objects.get(id=id)
-    form=EditCategoryForm(instance=category)
+    categorys=category.objects.get(id=id)
+    form=EditCategoryForm(instance=categorys)
+
     context = {
         'form': form,
         'id' : id,
-        'cate': cate
+        'categorys': categorys
         
     }
     if request.method == 'POST':
-        form = EditCategoryForm(request.POST, instance=category)
+        form = EditCategoryForm(request.POST,request.FILES, instance=categorys)
         
-        if form.is_valid():
-            
-            form.save()
-            return redirect('admin_category')
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Category updated successfully')
+
+        return redirect('admin_category')
 
     return render(request, 'customadmin/edit_category.html',context)
 
@@ -184,10 +187,6 @@ def delete_category(request,id):
     product=category.objects.get(id=id)
     product.delete()
     return redirect('admin_category')
-
-
-
-
 
 
 
