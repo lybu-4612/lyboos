@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',default=True, cast=bool)  #True or false
 
-ALLOWED_HOSTS = ['django-env.eba-qptapqmw.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['broshopstore.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -98,11 +98,12 @@ AUTH_USER_MODEL = 'accounts.Account'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'project',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'ENGINE': config('ENGINE'),
+        'NAME': config('Database'),
+        'USER': config('User'),
+        'PASSWORD': config('Password'),
+        'HOST': config('Host'),
+        'Port': config('Port'),
     }
 }
 
